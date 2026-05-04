@@ -1,3 +1,4 @@
+eval "$(direnv hook zsh)"
 # Enable colors for commands
 export CLICOLOR=1
 
@@ -9,3 +10,15 @@ alias ll='ls -Galh'
 
 # Colorful prompt
 PS1='%F{green}%n@%m%f %F{blue}%1~%f %# '
+
+# Pull in other aliases and secrets
+if [ -f ~/.alias ]; then
+	source ~/.alias
+else
+	print ".alias file not found"
+fi
+if [ -f ~/.secretenv ]; then
+	source .secretenv
+else
+	print ".secretenv not found"
+fi
