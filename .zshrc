@@ -7,6 +7,7 @@ alias ls='ls -G'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias ll='ls -Galh'
+alias dlog='sudo cat /var/lib/docker/volumes/jira-walkthrough-cron_wt-jira/_data/cron.log'
 
 # Colorful prompt
 PS1='%F{green}%n@%m%f %F{blue}%1~%f %# '
@@ -18,7 +19,7 @@ else
 	print ".alias file not found"
 fi
 if [ -f ~/.secretenv ]; then
-	source .secretenv
+	source ~/.secretenv
 else
 	print ".secretenv not found"
 fi
