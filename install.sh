@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-sudo timedatectl set-timezone America/Chicago
+#sudo timedatectl set-timezone America/Chicago
 git clone git@github.com:rhebron-cw/jira_autobot.git
 cd jira_autobot
 docker compose up --build -d
