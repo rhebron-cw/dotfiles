@@ -9,7 +9,7 @@ if [ -d "$REPO_DIR/.git" ]; then
   git -C "$REPO_DIR" pull >> "$LOG" 2>&1
 else
   mkdir ~/.ssh
-  ssh-keyscan git@github.com >> ~/.ssh/known_hosts
+  ssh-keyscan github.com >> ~/.ssh/known_hosts
   git clone git@github.com:rhebron-cw/jira_autobot.git "$REPO_DIR" >> "$LOG" 2>&1
 fi
 
