@@ -8,6 +8,7 @@ if [ -d "$REPO_DIR/.git" ]; then
   echo "$(date) jira_autobot already exists, updating" >> "$LOG"
   git -C "$REPO_DIR" pull >> "$LOG" 2>&1
 else
+  ssh-keyscan git@github.com> >> ~/.ssh/known_hosts
   git clone git@github.com:rhebron-cw/jira_autobot.git "$REPO_DIR" >> "$LOG" 2>&1
 fi
 
