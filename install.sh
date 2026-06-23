@@ -5,11 +5,12 @@ LOG=~/post_install.log
 REPO_DIR1=~/dotfiles
 REPO_DIR2=~/jira_autobot
 
-if [ -d "~/.ssh/known_hosts" ]; then
+if [ -d "~/.ssh" ]; then
   echo "$(date) ssh/known_hosts exists, continuing" >> "$LOG"
+  ssh-keyscan github.com >> ~/.ssh/known_hosts
 else
   echo "$(date) created ssh/known_hosts and added github fingerprint" >> "$LOG"
-#  mkdir ~/.ssh
+  mkdir ~/.ssh
   ssh-keyscan github.com >> ~/.ssh/known_hosts
 fi
 
@@ -27,6 +28,6 @@ else
   git clone git@github.com:rhebron-cw/jira_autobot.git "$REPO_DIR2" >> "$LOG" 2>&1
 fi
 
-cp ~/dotfiles/.*(.) ~/./
+#cp ~/dotfiles/.*(.) ~/./
 docker-compose -f "$REPO_DIR2/compose.yml" up --build -d >> "$LOG" 2>&1
 echo "$(date) install.sh ran successfully" >> "$LOG"
