@@ -1,17 +1,17 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-LOG=~/post_install.log
-REPO_DIR1=~/dotfiles
-REPO_DIR2=~/jira_autobot
+LOG=/home/coder/post_install.log
+REPO_DIR1=/home/coder/dotfiles
+REPO_DIR2=/home/coder/jira_autobot
 
-if [ -d "~/.ssh" ]; then
+if [ -d "/home/coder/.ssh" ]; then
   echo "$(date) ssh/known_hosts exists, continuing" >> "$LOG" 2>&1
   ssh-keyscan github.com >> ~/.ssh/known_hosts >> "$LOG" 2>&1
 else
-  echo "$(date) created ssh/known_hosts and added github fingerprint" >> "$LOG" 2>&1
-  mkdir ~/.ssh >> "$LOG" 2>&1
+  mkdir /home/coder/.ssh >> "$LOG" 2>&1
   ssh-keyscan github.com >> ~/.ssh/known_hosts >> "$LOG" 2>&1
+  echo "$(date) created ssh/known_hosts and added github fingerprint" >> "$LOG" 2>&1
 fi
 
 if [ -d "$REPO_DIR1/.git" ]; then
